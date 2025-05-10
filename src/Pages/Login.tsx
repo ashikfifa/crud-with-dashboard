@@ -1,17 +1,39 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Alert from "../components/Alert";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertInfo, setAlertInfo] = useState<{
+    state: string;
+    info: string;
+  } | null>(null);
 
   const handleLogin = async () => {
     if (email === "admin@example.com" && password === "admin") {
       localStorage.setItem("token", "demo-token");
+
       navigate("/dashboard");
+      setAlertInfo({
+        state: "success",
+        info: "Successfully logged in",
+      });
+      setAlertVisible(true);
+      setTimeout(() => {
+        setAlertVisible(false);
+      }, 5000);
     } else {
-      alert("Invalid email or password");
+      setAlertInfo({
+        state: "error",
+        info: "Invalid email or password",
+      });
+      setAlertVisible(true);
+      setTimeout(() => {
+        setAlertVisible(false);
+      }, 5000);
     }
   };
 
@@ -36,6 +58,11 @@ const Login = () => {
 
           <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
             Welcome back!
+          </p>
+
+          <p className="mt-4">
+            Email: admin@example.com <br />
+            Password: admin
           </p>
 
           <div className="mt-4">
@@ -84,7 +111,7 @@ const Login = () => {
           <div className="mt-6">
             <button
               onClick={handleLogin}
-              className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+              className="w-full cursor-pointer px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
             >
               Sign In
             </button>
@@ -104,6 +131,12 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+      {alertVisible && alertInfo && (
+        <div className="fixed top-4 right-4 z-50">
+          <Alert state={alertInfo.state} info={alertInfo.info} />
+        </div>
+      )}
     </div>
   );
 };

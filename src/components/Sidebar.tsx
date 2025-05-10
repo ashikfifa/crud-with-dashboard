@@ -1,4 +1,9 @@
-import { ArrowLeftToLine, ArrowRightToLine, LayoutDashboard, Package } from "lucide-react";
+import {
+  ArrowLeftToLine,
+  ArrowRightToLine,
+  LayoutDashboard,
+  Package,
+} from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -26,12 +31,16 @@ const Sidebar = () => {
       } transition-all duration-300`}
     >
       <div className="flex items-center justify-between p-4 border-b border-gray-700">
-        {!collapsed && <span className="text-lg font-bold">My App</span>}
+        {!collapsed && <span className="text-lg font-bold">Delivery App</span>}
         <button
           onClick={() => setCollapsed(!collapsed)}
           className="text-gray-400 hover:text-white focus:outline-none"
         >
-          {collapsed ? <ArrowRightToLine size={20} /> : <ArrowLeftToLine size={20}/> }
+          {collapsed ? (
+            <ArrowRightToLine size={20} />
+          ) : (
+            <ArrowLeftToLine size={20} />
+          )}
         </button>
       </div>
 

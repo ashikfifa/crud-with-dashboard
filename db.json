@@ -1,20 +1,31 @@
 {
   "deliveries": [
     {
-      "id": "1",
-      "name": "Grocery shopping- updated-2",
-      "email": "asik.rabbi85@gmail.com",
-      "phone": "+8801732675453",
-      "status": "pending",
-      "date": "2025-04-01"
+      "id": "5c98",
+      "name": "Md Asiquzzaman",
+      "email": "abid.hossain@adndiginet.com",
+      "phone": "01732675453",
+      "dob": "2025-05-23",
+      "status": "in-transit",
+      "date": "2025-05-23"
     },
     {
-      "id": "2",
-      "name": "Grocery shopping- updated-2",
-      "email": "ashik.rabbi85@gmail.com",
-      "phone": "+8801732675466",
-      "status": "pending",
-      "date": "2026-04-01"
+      "id": "9552",
+      "name": "asw-updted",
+      "email": "assdasd@gmail.com",
+      "phone": "01732675400",
+      "dob": "2025-05-11",
+      "status": "in-transit",
+      "date": "2025-05-11"
+    },
+    {
+      "id": "0b9e",
+      "name": "Md Asiquzzamanasd",
+      "email": "admin@example.com",
+      "phone": "01732675488",
+      "dob": "2025-05-11",
+      "status": "in-transit",
+      "date": "2025-05-11"
     }
   ]
 }

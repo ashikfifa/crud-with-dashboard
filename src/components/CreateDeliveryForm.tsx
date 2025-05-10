@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
-type FormValues = {
+export type FormValues = {
   name: string;
   email: string;
   phone: string;
@@ -8,16 +9,23 @@ type FormValues = {
   status: string;
 };
 
-const CreateDeliveryForm = () => {
+interface Props {
+  defaultValues?: FormValues;
+  onSubmit: (data: FormValues) => void;
+}
+
+const CreateDeliveryForm = ({ defaultValues, onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormValues>();
-
-  const onSubmit = (data: FormValues) => {
-    console.log("Form Submitted:", data);
-  };
+  useEffect(() => {
+    if (defaultValues) {
+      reset(defaultValues);
+    }
+  }, [defaultValues, reset]);
 
   return (
     <form
@@ -68,17 +76,19 @@ const CreateDeliveryForm = () => {
       <div>
         <label className="block font-medium">Date of Birth</label>
         <input
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 cursor-pointer"
           type="date"
+          onFocus={(e) => e.target.showPicker?.()}
           {...register("dob", { required: "Date of Birth is required" })}
         />
+
         {errors.dob && <p className="text-red-500">{errors.dob.message}</p>}
       </div>
 
       <div>
         <label className="block font-medium">Status</label>
         <select
-          className="w-full border rounded p-2"
+          className="w-full border rounded p-2 cursor-pointer"
           {...register("status", { required: "Status is required" })}
         >
           <option value="">Select status</option>
@@ -86,6 +96,7 @@ const CreateDeliveryForm = () => {
           <option value="in-transit">In Transit</option>
           <option value="delivered">Delivered</option>
         </select>
+
         {errors.status && (
           <p className="text-red-500">{errors.status.message}</p>
         )}
@@ -93,7 +104,7 @@ const CreateDeliveryForm = () => {
 
       <button
         type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="bg-blue-600 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700"
       >
         Submit
       </button>
