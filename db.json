@@ -1,0 +1,20 @@
+{
+  "deliveries": [
+    {
+      "id": "1",
+      "name": "Grocery shopping- updated-2",
+      "email": "asik.rabbi85@gmail.com",
+      "phone": "+8801732675453",
+      "status": "pending",
+      "date": "2025-04-01"
+    },
+    {
+      "id": "2",
+      "name": "Grocery shopping- updated-2",
+      "email": "ashik.rabbi85@gmail.com",
+      "phone": "+8801732675466",
+      "status": "pending",
+      "date": "2026-04-01"
+    }
+  ]
+}

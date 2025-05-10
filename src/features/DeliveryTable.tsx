@@ -28,7 +28,8 @@ const DeliveryTable = () => {
   ];
 
   return (
-    <div>
+    <div className=" p-4">
+      <h2 className="text-2xl font-bold mb-6">Delivery Table</h2>
       <DataTableComp columns={columns} data={data} />
     </div>
   );

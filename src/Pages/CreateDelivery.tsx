@@ -1,13 +1,12 @@
-import CreateDeliveryForm from "../components/CreateDeliveryForm"
+import CreateDeliveryForm from "../components/CreateDeliveryForm";
 
 const CreateDelivery = () => {
   return (
-    <div>
-      CreateDelivery
-
-      <CreateDeliveryForm/>
+    <div className="p -4">
+      <h2 className="text-2xl font-bold mb-6">Create Delivery</h2>
+      <CreateDeliveryForm />
     </div>
-  )
-}
+  );
+};
 
-export default CreateDelivery
+export default CreateDelivery;
