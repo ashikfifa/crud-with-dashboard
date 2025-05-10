@@ -1,20 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../redux/store";
 import { deleteDelivery, updateDelivery } from "../features/deliverySlice";
-import CreateDeliveryForm, { type FormValues } from "./CreateDeliveryForm";
+import CreateUserForm, { type FormValues } from "./CreateUserForm";
 import Alert from "./Alert";
 import { useState } from "react";
 
-interface DeliverModalType {
+interface UserModalType {
   openModal: boolean;
   handleClose: () => void;
   selectedDelivery?: any;
 }
-const DeliverModal = ({
+const UserModal = ({
   openModal,
   selectedDelivery,
   handleClose,
-}: DeliverModalType) => {
+}: UserModalType) => {
   const dispatch = useDispatch<AppDispatch>();
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertInfo, setAlertInfo] = useState<{
@@ -92,7 +92,7 @@ const DeliverModal = ({
 
             <div id="content-3a" className="flex-1 overflow-auto">
               {editOr ? (
-                <CreateDeliveryForm
+                <CreateUserForm
                   defaultValues={selectedDelivery}
                   onSubmit={(data: FormValues) => {
                     const updatedDelivery = {
@@ -147,4 +147,4 @@ const DeliverModal = ({
   );
 };
 
-export default DeliverModal;
+export default UserModal;

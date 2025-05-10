@@ -18,8 +18,8 @@ const Sidebar = () => {
       icon: <LayoutDashboard size={20} />,
     },
     {
-      name: "Deliveries",
-      path: "/create-deliveries",
+      name: "User",
+      path: "/create-user",
       icon: <Package size={20} />,
     },
   ];
@@ -31,10 +31,10 @@ const Sidebar = () => {
       } transition-all duration-300`}
     >
       <div className="flex items-center justify-between p-4 border-b border-gray-700">
-        {!collapsed && <span className="text-lg font-bold">Delivery App</span>}
+        {!collapsed && <span className="text-lg font-bold">User App</span>}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="text-gray-400 hover:text-white focus:outline-none"
+          className="text-gray-400 cursor-pointer hover:text-white focus:outline-none"
         >
           {collapsed ? (
             <ArrowRightToLine size={20} />

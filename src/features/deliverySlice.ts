@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// const API_URL = "https://delivertrack.onrender.com/deliveries";
 // const API_URL= process.env.REACT_APP_API_URL
 const API_URL = "http://localhost:3001/deliveries";
 
@@ -21,7 +20,7 @@ export const fetchDeliveries = createAsyncThunk(
   }
 );
 
-export const createDelivery = createAsyncThunk<Delivery, Delivery>(
+export const CreateUser = createAsyncThunk<Delivery, Delivery>(
   "deliveries/create",
   async (newDelivery) => {
     const response = await axios.post(API_URL, newDelivery);
@@ -55,6 +54,7 @@ const deliveriesSlice = createSlice({
     status: "idle",
     error: null,
     statusCounts: {},
+    monthCounts: {},
   } as any,
   reducers: {},
   extraReducers: (builder) => {
@@ -62,23 +62,11 @@ const deliveriesSlice = createSlice({
       .addCase(fetchDeliveries.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchDeliveries.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.rows = action.payload;
-
-        const counts: Record<string, number> = {};
-        action.payload.forEach((delivery: any) => {
-          const status = delivery.status || "Unknown";
-          counts[status] = (counts[status] || 0) + 1;
-        });
-
-        state.statusCounts = counts;
-      })
       .addCase(fetchDeliveries.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
-      .addCase(createDelivery.fulfilled, (state, action) => {
+      .addCase(CreateUser.fulfilled, (state, action) => {
         state.rows.push(action.payload);
       })
       .addCase(updateDelivery.fulfilled, (state, action) => {
@@ -93,6 +81,27 @@ const deliveriesSlice = createSlice({
         state.rows = state.rows.filter(
           (delivery: any) => delivery.id !== action.payload
         );
+      })
+      .addCase(fetchDeliveries.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.rows = action.payload;
+
+        const statusCounts: Record<string, number> = {};
+        const monthCounts: Record<string, number> = {};
+
+        action.payload.forEach((delivery: any) => {
+          const status = delivery.status || "Unknown";
+          statusCounts[status] = (statusCounts[status] || 0) + 1;
+          const date = new Date(delivery.date);
+          const month = date.toLocaleString("default", {
+            month: "long",
+            year: "numeric",
+          });
+          monthCounts[month] = (monthCounts[month] || 0) + 1;
+        });
+
+        state.statusCounts = statusCounts;
+        state.monthCounts = monthCounts;
       });
   },
 });

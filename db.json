@@ -6,7 +6,7 @@
       "email": "abid.hossain@adndiginet.com",
       "phone": "01732675453",
       "dob": "2025-05-23",
-      "status": "in-transit",
+      "status": "active",
       "date": "2025-05-23"
     },
     {
@@ -14,18 +14,36 @@
       "name": "asw-updted",
       "email": "assdasd@gmail.com",
       "phone": "01732675400",
-      "dob": "2025-05-11",
-      "status": "in-transit",
-      "date": "2025-05-11"
+      "dob": "2025-02-11",
+      "status": "pending",
+      "date": "2025-02-11"
     },
     {
       "id": "0b9e",
       "name": "Md Asiquzzamanasd",
       "email": "admin@example.com",
       "phone": "01732675488",
-      "dob": "2025-05-11",
-      "status": "in-transit",
-      "date": "2025-05-11"
+      "dob": "2025-06-11",
+      "status": "pending",
+      "date": "2025-06-11"
+    },
+    {
+      "id": "0d8d",
+      "name": "kohli",
+      "email": "kohli@gmail.com",
+      "phone": "01732675466",
+      "dob": "2025-02-13",
+      "status": "inactive",
+      "date": "2025-02-13"
+    },
+    {
+      "id": "7a6b",
+      "name": "Anik",
+      "email": "anik@gmail.com",
+      "phone": "01332675453",
+      "dob": "2025-05-16",
+      "status": "pending",
+      "date": "2025-05-16"
     }
   ]
 }

@@ -1,13 +1,13 @@
 import { useDispatch } from "react-redux";
-import CreateDeliveryForm, {
+import CreateUserForm, {
   type FormValues,
-} from "../components/CreateDeliveryForm";
+} from "../components/CreateUserForm";
 import type { AppDispatch } from "../redux/store";
-import { createDelivery } from "../features/deliverySlice";
+import { CreateUser } from "../features/deliverySlice";
 import { useState } from "react";
 import Alert from "../components/Alert";
 
-const CreateDelivery = () => {
+const CreateUserPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertInfo, setAlertInfo] = useState<{
@@ -20,7 +20,7 @@ const CreateDelivery = () => {
       ...data,
       date: data.dob,
     };
-    dispatch(createDelivery(newDelivery));
+    dispatch(CreateUser(newDelivery));
     setAlertInfo({
       state: "success",
       info: "Delivery data has successfully created",
@@ -33,8 +33,8 @@ const CreateDelivery = () => {
 
   return (
     <div className="">
-      <h2 className="text-2xl font-bold mb-2">Create Delivery</h2>
-      <CreateDeliveryForm onSubmit={handleCreate} />
+      <h2 className="text-2xl font-bold mb-2">Create User</h2>
+      <CreateUserForm onSubmit={handleCreate} />
 
       {alertVisible && alertInfo && (
         <div className="fixed top-4 right-4 z-50">
@@ -45,4 +45,4 @@ const CreateDelivery = () => {
   );
 };
 
-export default CreateDelivery;
+export default CreateUserPage;

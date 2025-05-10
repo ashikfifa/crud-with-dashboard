@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DashboardNav from "../components/DashboardNav";
-import DeliveryChart from "../features/DeliveryChart";
+import UserChart from "../features/UserChart";
 import DeliveryTable from "../features/DeliveryTable";
 
 const Dashboard = () => {
@@ -12,7 +12,7 @@ const Dashboard = () => {
 
       <div className="p-4">
         {activeTab === "Table" && <DeliveryTable />}
-        {activeTab === "Chart" && <DeliveryChart />}
+        {activeTab === "Chart" && <UserChart />}
       </div>
     </div>
   );

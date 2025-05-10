@@ -4,7 +4,7 @@ import type { AppDispatch, RootState } from "../redux/store";
 import { useEffect, useState } from "react";
 import { fetchDeliveries } from "./deliverySlice";
 import { setEditOr } from "./deliveryModalSlice";
-import DeliverModal from "../components/DeliverModal";
+import UserModal from "../components/UserModal";
 
 const DeliveryTable = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -32,7 +32,7 @@ const DeliveryTable = () => {
       sortable: true,
     },
     {
-      name: "Date",
+      name: "Date of birth",
       selector: (row: any) => row.date,
       sortable: true,
     },
@@ -77,10 +77,10 @@ const DeliveryTable = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-2xl font-bold mb-6">Delivery Table</h2>
+      <h2 className="text-2xl font-bold mb-6">User Table</h2>
       <DataTableComp columns={columns} data={getRows} />
 
-      <DeliverModal
+      <UserModal
         openModal={openModal}
         handleClose={() => {
           setOpenModal(false);

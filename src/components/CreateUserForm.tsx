@@ -14,7 +14,7 @@ interface Props {
   onSubmit: (data: FormValues) => void;
 }
 
-const CreateDeliveryForm = ({ defaultValues, onSubmit }: Props) => {
+const CreateUserForm = ({ defaultValues, onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
@@ -92,9 +92,9 @@ const CreateDeliveryForm = ({ defaultValues, onSubmit }: Props) => {
           {...register("status", { required: "Status is required" })}
         >
           <option value="">Select status</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
           <option value="pending">Pending</option>
-          <option value="in-transit">In Transit</option>
-          <option value="delivered">Delivered</option>
         </select>
 
         {errors.status && (
@@ -112,4 +112,4 @@ const CreateDeliveryForm = ({ defaultValues, onSubmit }: Props) => {
   );
 };
 
-export default CreateDeliveryForm;
+export default CreateUserForm;
