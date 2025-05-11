@@ -16,14 +16,14 @@ const CreateUserPage = () => {
   } | null>(null);
 
   const handleCreate = (data: FormValues) => {
-    const newDelivery = {
+    const newUser = {
       ...data,
       date: data.dob,
     };
-    dispatch(CreateUser(newDelivery));
+    dispatch(CreateUser(newUser));
     setAlertInfo({
       state: "success",
-      info: "Delivery data has successfully created",
+      info: "User data has successfully created",
     });
     setAlertVisible(true);
     setTimeout(() => {
@@ -33,7 +33,7 @@ const CreateUserPage = () => {
 
   return (
     <div className="">
-      <h2 className="text-2xl font-bold mb-2">Create User</h2>
+      <h2 className="text-2xl font-bold mb-2 pl-6">Create User</h2>
       <CreateUserForm onSubmit={handleCreate} />
 
       {alertVisible && alertInfo && (

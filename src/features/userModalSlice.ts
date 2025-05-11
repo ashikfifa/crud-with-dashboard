@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 const userModalSlice = createSlice({
-    name: "deliveryModal",
+    name: "userModal",
     initialState: {
         editOr: false,
     } as any,

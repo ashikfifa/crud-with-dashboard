@@ -8,11 +8,11 @@ import { useState } from "react";
 interface UserModalType {
   openModal: boolean;
   handleClose: () => void;
-  selectedDelivery?: any;
+  selectedUser?: any;
 }
 const UserModal = ({
   openModal,
-  selectedDelivery,
+  selectedUser,
   handleClose,
 }: UserModalType) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,14 +22,14 @@ const UserModal = ({
     info: string;
   } | null>(null);
 
-  const editOr = useSelector((state: any) => state.deliveryModal.editOr);
+  const editOr = useSelector((state: any) => state.userModal.editOr);
 
   const handleDelete = () => {
-    if (selectedDelivery !== undefined) {
-      dispatch(deleteUser(selectedDelivery));
+    if (selectedUser !== undefined) {
+      dispatch(deleteUser(selectedUser));
       setAlertInfo({
         state: "success",
-        info: "Delivery data has been successfully deleted",
+        info: "User data has been successfully deleted",
       });
       setAlertVisible(true);
 
@@ -58,7 +58,7 @@ const UserModal = ({
           >
             <header id="header-3a" className="flex items-center gap-4">
               <h3 className="flex-1 text-xl font-medium text-slate-700">
-                Delivery Form
+                User Form
               </h3>
               <button
                 className="inline-flex cursor-pointer items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide transition duration-300 rounded-full focus-visible:outline-none justify-self-center whitespace-nowrap text-emerald-500 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent"
@@ -93,17 +93,17 @@ const UserModal = ({
             <div id="content-3a" className="flex-1 overflow-auto">
               {editOr ? (
                 <CreateUserForm
-                  defaultValues={selectedDelivery}
+                  defaultValues={selectedUser}
                   onSubmit={(data: FormValues) => {
-                    const updatedDelivery = {
+                    const updatedUser = {
                       ...data,
-                      id: selectedDelivery.id,
+                      id: selectedUser.id,
                       date: data.dob,
                     };
-                    dispatch(updateUser(updatedDelivery));
+                    dispatch(updateUser(updatedUser));
                     setAlertInfo({
                       state: "success",
-                      info: "Delivery data has successfully updated",
+                      info: "User data has successfully updated",
                     });
                     setAlertVisible(true);
                     setTimeout(() => {
@@ -115,7 +115,7 @@ const UserModal = ({
               ) : (
                 <>
                   <p className="mb-4 text-slate-700">
-                    Are you sure you want to delete the delivery?
+                    Are you sure you want to delete the user?
                   </p>
                   <div className="flex justify-end gap-4">
                     <button

@@ -4,7 +4,7 @@ import userModalSlice from '../features/userModalSlice';
 export const store = configureStore({
   reducer: {
     deliveries: deliveriesReducer,
-    deliveryModal: userModalSlice,
+    userModal: userModalSlice,
   },
 });
 

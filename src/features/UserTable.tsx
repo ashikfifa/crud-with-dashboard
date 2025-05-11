@@ -8,7 +8,7 @@ import UserModal from "../components/UserModal";
 
 const UserTable = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [selectedDelivery, setSelectedDelivery] = useState<any>(null);
+  const [selectedUser, setSelectedUser] = useState<any>(null);
   const dispatch = useDispatch<AppDispatch>();
   const columns = [
     {
@@ -62,13 +62,13 @@ const UserTable = () => {
   ];
 
   const handleEdit = (row: any) => {
-    setSelectedDelivery(row);
+    setSelectedUser(row);
     setOpenModal(true);
     dispatch(setEditOr(true));
   };
 
   const handleDelete = (id: string) => {
-    setSelectedDelivery(id);
+    setSelectedUser(id);
     setOpenModal(true);
     dispatch(setEditOr(false));
   };
@@ -90,9 +90,9 @@ const UserTable = () => {
         openModal={openModal}
         handleClose={() => {
           setOpenModal(false);
-          setSelectedDelivery(null);
+          setSelectedUser(null);
         }}
-        selectedDelivery={selectedDelivery}
+        selectedUser={selectedUser}
       />
     </div>
   );
