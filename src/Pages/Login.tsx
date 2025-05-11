@@ -12,15 +12,22 @@ const Login = () => {
     info: string;
   } | null>(null);
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: any) => {
     if (email === "admin@example.com" && password === "admin") {
+      e.preventDefault();
       localStorage.setItem("token", "demo-token");
 
-      navigate("/dashboard");
       setAlertInfo({
         state: "success",
         info: "Successfully logged in",
       });
+      setAlertVisible(true);
+
+      setTimeout(() => {
+        setAlertVisible(false);
+        navigate("/dashboard");
+      }, 1000);
+
       setAlertVisible(true);
       setTimeout(() => {
         setAlertVisible(false);
