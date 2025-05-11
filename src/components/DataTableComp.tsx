@@ -4,7 +4,7 @@ const DataTableComp = (props: any) => {
   const { columns, data } = props;
 
   return (
-    <div className=" overflow-x-auto">
+    <div className="">
       <DataTable
         columns={columns}
         data={data}

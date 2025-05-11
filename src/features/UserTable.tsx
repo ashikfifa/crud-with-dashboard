@@ -27,20 +27,11 @@ const UserTable = () => {
       name: "Phone",
       selector: (row: any) => row.phone,
       sortable: true,
+      width: '210px'
     },
     {
       name: "Status",
       selector: (row: any) => row.status,
-      sortable: true,
-    },
-    {
-      name: "Date of birth",
-      selector: (row: any) => row.date,
-      sortable: true,
-    },
-    {
-      name: "Date of birth",
-      selector: (row: any) => row.date,
       sortable: true,
     },
     {
@@ -66,6 +57,7 @@ const UserTable = () => {
           </button>
         </div>
       ),
+      width: '210px'
     },
   ];
 
@@ -90,7 +82,9 @@ const UserTable = () => {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-6">User Table</h2>
+      <div className=" datTableWidthAdjustment mx-auto">
       <DataTableComp columns={columns} data={getRows} />
+      </div>
 
       <UserModal
         openModal={openModal}

@@ -1,3 +1,23 @@
-.react-dataTable {
-  min-width: 600px;
+.datTableWidthAdjustment {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+}
+
+@media (min-width: 981px) and (max-width: 1243px) {
+  .datTableWidthAdjustment {
+    max-width: 680px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+  .datTableWidthAdjustment {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 767px) {
+  .datTableWidthAdjustment {
+    max-width: 200px;
+  }
 }
