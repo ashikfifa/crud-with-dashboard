@@ -4,14 +4,16 @@ const DataTableComp = (props: any) => {
   const { columns, data } = props;
 
   return (
-    <div>
+    <div className=" overflow-x-auto">
       <DataTable
         columns={columns}
         data={data}
         pagination
-        highlightOnHover
-        striped
-      />
+        persistTableHead
+        responsive
+        fixedHeader
+        fixedHeaderScrollHeight="300px"
+        />
     </div>
   );
 };

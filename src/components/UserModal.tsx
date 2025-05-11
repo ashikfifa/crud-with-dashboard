@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch } from "../redux/store";
-import { deleteDelivery, updateDelivery } from "../features/deliverySlice";
+import { deleteUser, updateUser } from "../features/usersSlice";
 import CreateUserForm, { type FormValues } from "./CreateUserForm";
 import Alert from "./Alert";
 import { useState } from "react";
@@ -26,7 +26,7 @@ const UserModal = ({
 
   const handleDelete = () => {
     if (selectedDelivery !== undefined) {
-      dispatch(deleteDelivery(selectedDelivery));
+      dispatch(deleteUser(selectedDelivery));
       setAlertInfo({
         state: "success",
         info: "Delivery data has been successfully deleted",
@@ -100,7 +100,7 @@ const UserModal = ({
                       id: selectedDelivery.id,
                       date: data.dob,
                     };
-                    dispatch(updateDelivery(updatedDelivery));
+                    dispatch(updateUser(updatedDelivery));
                     setAlertInfo({
                       state: "success",
                       info: "Delivery data has successfully updated",

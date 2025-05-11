@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DataTableComp from "../components/DataTableComp";
 import type { AppDispatch, RootState } from "../redux/store";
 import { useEffect, useState } from "react";
-import { fetchDeliveries } from "./deliverySlice";
+import { fetchUsers } from "./usersSlice";
 import { setEditOr } from "./deliveryModalSlice";
 import UserModal from "../components/UserModal";
 
@@ -15,11 +15,13 @@ const DeliveryTable = () => {
       name: "Name",
       selector: (row: any) => <span title={row.name}> {row.name} </span>,
       sortable: true,
+      width: '210px'
     },
     {
       name: "Email",
       selector: (row: any) => <span title={row.email}> {row.email} </span>,
       sortable: true,
+      width: '210px'
     },
     {
       name: "Phone",
@@ -29,6 +31,16 @@ const DeliveryTable = () => {
     {
       name: "Status",
       selector: (row: any) => row.status,
+      sortable: true,
+    },
+    {
+      name: "Date of birth",
+      selector: (row: any) => row.date,
+      sortable: true,
+    },
+    {
+      name: "Date of birth",
+      selector: (row: any) => row.date,
       sortable: true,
     },
     {
@@ -72,7 +84,7 @@ const DeliveryTable = () => {
   const getRows = useSelector((state: RootState) => state.deliveries.rows);
 
   useEffect(() => {
-    dispatch(fetchDeliveries());
+    dispatch(fetchUsers());
   }, [dispatch]);
 
   return (

@@ -3,7 +3,7 @@ import CreateUserForm, {
   type FormValues,
 } from "../components/CreateUserForm";
 import type { AppDispatch } from "../redux/store";
-import { CreateUser } from "../features/deliverySlice";
+import { CreateUser } from "../features/usersSlice";
 import { useState } from "react";
 import Alert from "../components/Alert";
 

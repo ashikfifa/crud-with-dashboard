@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // const API_URL= process.env.REACT_APP_API_URL
-const API_URL = "http://localhost:3001/deliveries";
+const API_URL = "http://localhost:3001/users";
 
-type Delivery = {
+type User = {
   id?: number;
   email: string;
   phone: string;
@@ -12,43 +12,43 @@ type Delivery = {
   date: string | Date;
 };
 
-export const fetchDeliveries = createAsyncThunk(
-  "deliveries/fetchAll",
+export const fetchUsers = createAsyncThunk(
+  "users/fetchAll",
   async () => {
     const response = await axios.get(API_URL);
     return response.data;
   }
 );
 
-export const CreateUser = createAsyncThunk<Delivery, Delivery>(
-  "deliveries/create",
-  async (newDelivery) => {
-    const response = await axios.post(API_URL, newDelivery);
+export const CreateUser = createAsyncThunk<User, User>(
+  "users/create",
+  async (newUser) => {
+    const response = await axios.post(API_URL, newUser);
     return response.data;
   }
 );
 
-export const updateDelivery = createAsyncThunk<Delivery, Delivery>(
-  "deliveries/update",
-  async (updatedDelivery) => {
+export const updateUser = createAsyncThunk<User, User>(
+  "users/update",
+  async (updatedUser) => {
     const response = await axios.put(
-      `${API_URL}/${updatedDelivery.id}`,
-      updatedDelivery
+      `${API_URL}/${updatedUser.id}`,
+      updatedUser
     );
     return response.data;
   }
 );
 
-export const deleteDelivery = createAsyncThunk(
-  "deliveries/delete",
+export const deleteUser = createAsyncThunk(
+  "users/delete",
   async (id: number) => {
     await axios.delete(`${API_URL}/${id}`);
     return id;
   }
 );
 
-const deliveriesSlice = createSlice({
-  name: "deliveries",
+const usersSlice = createSlice({
+  name: "users",
   initialState: {
     rows: [],
     status: "idle",
@@ -59,17 +59,17 @@ const deliveriesSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDeliveries.pending, (state) => {
+      .addCase(fetchUsers.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchDeliveries.rejected, (state, action) => {
+      .addCase(fetchUsers.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
       .addCase(CreateUser.fulfilled, (state, action) => {
         state.rows.push(action.payload);
       })
-      .addCase(updateDelivery.fulfilled, (state, action) => {
+      .addCase(updateUser.fulfilled, (state, action) => {
         const index = state.rows.findIndex(
           (item: any) => item.id === action.payload.id
         );
@@ -77,22 +77,22 @@ const deliveriesSlice = createSlice({
           state.rows[index] = action.payload;
         }
       })
-      .addCase(deleteDelivery.fulfilled, (state, action) => {
+      .addCase(deleteUser.fulfilled, (state, action) => {
         state.rows = state.rows.filter(
-          (delivery: any) => delivery.id !== action.payload
+          (User: any) => User.id !== action.payload
         );
       })
-      .addCase(fetchDeliveries.fulfilled, (state, action) => {
+      .addCase(fetchUsers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.rows = action.payload;
 
         const statusCounts: Record<string, number> = {};
         const monthCounts: Record<string, number> = {};
 
-        action.payload.forEach((delivery: any) => {
-          const status = delivery.status || "Unknown";
+        action.payload.forEach((User: any) => {
+          const status = User.status || "Unknown";
           statusCounts[status] = (statusCounts[status] || 0) + 1;
-          const date = new Date(delivery.date);
+          const date = new Date(User.date);
           const month = date.toLocaleString("default", {
             month: "long",
             year: "numeric",
@@ -106,4 +106,4 @@ const deliveriesSlice = createSlice({
   },
 });
 
-export default deliveriesSlice.reducer;
+export default usersSlice.reducer;
