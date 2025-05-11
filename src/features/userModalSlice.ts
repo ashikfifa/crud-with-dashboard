@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-const deliveryModalSlice = createSlice({
+const userModalSlice = createSlice({
     name: "deliveryModal",
     initialState: {
         editOr: false,
@@ -12,5 +12,5 @@ const deliveryModalSlice = createSlice({
     },
 })
 
-export const { setEditOr } = deliveryModalSlice.actions;
-export default deliveryModalSlice.reducer;
+export const { setEditOr } = userModalSlice.actions;
+export default userModalSlice.reducer;

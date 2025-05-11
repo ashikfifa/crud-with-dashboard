@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import deliveriesReducer from '../features/usersSlice';
-import deliveryModalSlice from '../features/deliveryModalSlice';
+import userModalSlice from '../features/userModalSlice';
 export const store = configureStore({
   reducer: {
     deliveries: deliveriesReducer,
-    deliveryModal: deliveryModalSlice,
+    deliveryModal: userModalSlice,
   },
 });
 

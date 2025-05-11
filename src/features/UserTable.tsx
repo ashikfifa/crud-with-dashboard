@@ -3,10 +3,10 @@ import DataTableComp from "../components/DataTableComp";
 import type { AppDispatch, RootState } from "../redux/store";
 import { useEffect, useState } from "react";
 import { fetchUsers } from "./usersSlice";
-import { setEditOr } from "./deliveryModalSlice";
+import { setEditOr } from "./userModalSlice";
 import UserModal from "../components/UserModal";
 
-const DeliveryTable = () => {
+const UserTable = () => {
   const [openModal, setOpenModal] = useState(false);
   const [selectedDelivery, setSelectedDelivery] = useState<any>(null);
   const dispatch = useDispatch<AppDispatch>();
@@ -104,4 +104,4 @@ const DeliveryTable = () => {
   );
 };
 
-export default DeliveryTable;
+export default UserTable;
