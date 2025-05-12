@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Alert from "../components/Alert";
 
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [alertVisible, setAlertVisible] = useState(false);
@@ -25,13 +23,13 @@ const Login = () => {
 
       setTimeout(() => {
         setAlertVisible(false);
-        navigate("/dashboard");
       }, 1000);
 
       setAlertVisible(true);
       setTimeout(() => {
         setAlertVisible(false);
       }, 5000);
+      window.location.href = "/dashboard";
     } else {
       setAlertInfo({
         state: "error",
