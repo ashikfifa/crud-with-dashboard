@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard';
 import CreateUser from './Pages/CreateUserPage';
@@ -18,13 +18,6 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create-user" element={<CreateUser />} />
           </Route>
-        )}
-
-        {isAuthenticated !== 'demo-token' && (
-          <>
-            <Route path="/dashboard" element={<Navigate to="/" />} />
-            <Route path="/create-user" element={<Navigate to="/" />} />
-          </>
         )}
       </Routes>
     </BrowserRouter>
